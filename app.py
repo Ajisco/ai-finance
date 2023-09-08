@@ -6,16 +6,14 @@ import openai
 import os
 import json
 import time
-import seaborn as sns
-import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score
-import warnings
+#import warnings
 from sklearn.ensemble import RandomForestClassifier
-warnings.filterwarnings("ignore", category=FutureWarning)
+#warnings.filterwarnings("ignore", category=FutureWarning)
 
 
 

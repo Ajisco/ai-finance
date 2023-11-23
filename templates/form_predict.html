@@ -27,6 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{url_for('static', filename='assets/css/style.css')}}" rel="stylesheet">
+
   <style>
     body {
       background-color:#37517e;
@@ -90,7 +91,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="/chat">Chat</a></li>
         
-          
+         
           <li><a class="getstarted scrollto" href="#why-us">Get Started</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -98,112 +99,74 @@
 
     </div>
   </header><!-- End Header -->
-
+ 
   <main id="main">
     <!-- Main content -->
     <section class="form-section">
       <div class="form-container">
+          
             <div class="accordion-list">
-              <form style="text-shadow:none;position: relative; text-align: left; color: white;" method="POST" action="{{url_for('financial_advice')}}">
+              <h3>Predict your loan application and learn where and how to!!</h1>
+                <h4>Kindly fill the form below</h2>
+              <form style="text-shadow:none;position: relative; text-align: left; font-color: white;" method="POST" action="{{url_for('chat_predict')}}">
                    
 
-                Domain of Interest </br>
-               <input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="text" aria-label=".form-control-lg example" name="domain_interest" value="" placeholder="Input your user name" required/><br>
-            
-               Business Description </br>
-               <input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="text" aria-label=".form-control-lg example" name="description" value="" placeholder="Business Description" required/><br>
-            
-
-            
-             Country of Establishment in Africa</br>
-                <select style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-  name="country_interest" id="country_interest" required>
-  <option  value=""> Choose </option>
-  <option value="Algeria">Algeria</option>
-  <option value="Angola">Angola</option>
-  <option value="Benin">Benin</option>
-  <option value="Botswana">Botswana</option>
-  <option value="Burkina Faso">Burkina Faso</option>
-  <option value="Burundi">Burundi</option>
-  <option value="Cabo Verde">Cabo Verde</option>
-  <option value="Cameroon">Cameroon</option>
-  <option value="Central African Republic">Central African Republic</option>
-  <option value="Chad">Chad</option>
-  <option value="Comoros">Comoros</option>
-  <option value="Congo, Democratic Republic of the">Congo, Democratic Republic of the</option>
-  <option value="Congo, Republic of the">Congo, Republic of the</option>
-  <option value="Djibouti">Djibouti</option>
-  <option value="Egypt">Egypt</option>
-  <option value="Equatorial Guinea">Equatorial Guinea</option>
-  <option value="Eritrea">Eritrea</option>
-  <option value="Eswatini">Eswatini</option>
-  <option value="Ethiopia">Ethiopia</option>
-  <option value="Gabon">Gabon</option>
-  <option value="Gambia">Gambia</option>
-  <option value="Ghana">Ghana</option>
-  <option value="Guinea">Guinea</option>
-  <option value="Guinea-Bissau">Guinea-Bissau</option>
-  <option value="Ivory Coast">Ivory Coast</option>
-  <option value="Kenya">Kenya</option>
-  <option value="Lesotho">Lesotho</option>
-  <option value="Liberia">Liberia</option>
-  <option value="Libya">Libya</option>
-  <option value="Madagascar">Madagascar</option>
-  <option value="Malawi">Malawi</option>
-  <option value="Mali">Mali</option>
-  <option value="Mauritania">Mauritania</option>
-  <option value="Mauritius">Mauritius</option>
-  <option value="Morocco">Morocco</option>
-  <option value="Mozambique">Mozambique</option>
-  <option value="Namibia">Namibia</option>
-  <option value="Niger">Niger</option>
-  <option value="Nigeria">Nigeria</option>
-  <option value="Rwanda">Rwanda</option>
-  <option value="Sao Tome and Principe">Sao Tome and Principe</option>
-  <option value="Senegal">Senegal</option>
-  <option value="Seychelles">Seychelles</option>
-  <option value="Sierra Leone">Sierra Leone</option>
-  <option value="Somalia">Somalia</option>
-  <option value="South Africa">South Africa</option>
-  <option value="South Sudan">South Sudan</option>
-  <option value="Sudan">Sudan</option>
-  <option value="Tanzania">Tanzania</option>
-  <option value="Togo">Togo</option>
-  <option value="Tunisia">Tunisia</option>
-  <option value="Uganda">Uganda</option>
-  <option value="Zambia">Zambia</option>
-  <option value="Zimbabwe">Zimbabwe</option>
-  
-                 </select>
-
+                Number of Dependents </br>
+                <input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="number" aria-label=".form-control-lg example"  name="depend" step="1"  value="" placeholder=" " required/><br> 
                    
-            Do you have capital or loan?</br>
+                Education</br>
              <select style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
-name="capital_loan" id="country_interest" required>
+name="education" id="education" required>
 <option  value=""> Choose </option>
-<option value="capital">Capital</option>
-<option value="loan">Loan</option>
+<option value=0>Graduate</option>
+<option value=1>Not Graduate</option>
 </select>
 
-How Much (In US Dolars) </br>
-<input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="number" aria-label=".form-control-lg example"  name="amount" step="any"  value="" placeholder=" " required/><br>
+   
+Employmennt Status</br>
+<select style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+name="employment" id="employment" required>
+<option  value=""> Choose </option>
+<option value=1>Employed (Self) </option>
+<option value=0>Not Employed</option>
+</select>
 
 
-In how many months are you required to repay the loan (Write 0 if capital) </br>
-<input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="number" aria-label=".form-control-lg example"  name="loan_pay_month" step="any"  value="" placeholder=" " required/><br>
+
+Annual Income (USD) </br>
+<input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="number" aria-label=".form-control-lg example"  name="income" step="any"  value="" placeholder=" " required/><br>
+
+Loan amount (USD) </br>
+<input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="number" aria-label=".form-control-lg example"  name="loan_amount" step="any"  value="" placeholder=" " required/><br>
 
 
-             
+Loan Term (Years) </br>
+<input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="number" aria-label=".form-control-lg example"  name="loan_term" step="any"  value="" placeholder=" " required/><br>
+
+Credit Score 
+<input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="number" aria-label=".form-control-lg example"  name="score" step="any"  value="" placeholder=" " required/><br>
+
+Value of Residential Assets  
+<input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="number" aria-label=".form-control-lg example"  name="resident" step="any"  value="" placeholder=" " required/><br>
+Value of Commercial Assets 
+<input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="number" aria-label=".form-control-lg example"  name="commercial" step="any"  value="" placeholder=" " required/><br>
+Value of Luxury Assets    
+<input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="number" aria-label=".form-control-lg example"  name="luxury" step="any"  value="" placeholder=" " required/><br>
+Value of Assets Held at the Bank   
+<input style="text-shadow:none;background-color:#4A4B6E; border-color: #4A4B6E; color: white; font-size: 16px;" class="form-control form-control-lg" type="number" aria-label=".form-control-lg example"  name="bank" step="any"  value="" placeholder=" " required/><br>
+          
            <br>
              <div class="col-12" style="text-shadow:none;text-align: center;">
                  <input class="btn btn-lg btn-secondary"  style="text-shadow:none;background-color: #E4542A; color: white; border-color:#E4542A " type="submit" value="Continue" />
              </div>
              
-             
+          
          </form>
         </div>
       </section>
     </main>
+
+  
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

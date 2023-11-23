@@ -90,25 +90,17 @@
                          
                             <div class='message my-message'>
                             Hello <strong>{{name}}.</strong> 
-
-                            {%if pred == 1%}
-                             So sorry your application does not look like it would be approved. Try editing and recheck.<br>
-                             {%elif pred == 0%}
-                            Congratulations, it looks like your application would be approved!
-                             {%endif%}<br><hr>
-                            Here are places you can check to get loan in {{country}} and outside:<br><br>
-                            <strong>In {{country}}:</strong><br>
-                            {%for i in bot_predict_response%}
                             
-                            -  <a href={{i['myCountry']['link']}} target="_blank">{{i['myCountry']['organizationName']}}</a><br>
+                           
+                            
+                            Here are nice business ideas based on your interest and suitable in {{country}}:<br><br>
+                            
+                            {%for i in bot_business_response%}
+                            
+                            -  <a href={{i['link']}} target="_blank">{{i['Business_Idea']}}</a>
+                            (Sector: {{i['sector']}}) <br>
                             {%endfor%}
                             
-                            <br>
-                            <strong>Other Countries:</strong><br>
-                            {%for i in bot_predict_response%}
-                            
-                            -  <a href={{i['otherCountry']['link']}} target="_blank">{{i['otherCountry']['organizationName']}}</a>
-                            <br>{%endfor%}
                             <br>
                             
 
@@ -418,7 +410,7 @@ body{
           
             $.ajax({
               type: "POST",
-              url: "/further_predict_chat",
+              url: "/further_business_chat",
               data: {
                   question: $("#question").val()
               },

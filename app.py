@@ -6,80 +6,69 @@ import openai
 import os
 import json
 import time
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import f1_score
-#import warnings
-from sklearn.ensemble import RandomForestClassifier
-#warnings.filterwarnings("ignore", category=FutureWarning)
+import joblib
+
+# from sklearn.preprocessing import StandardScaler
+# from sklearn.model_selection import train_test_split
+# from sklearn.metrics import classification_report
+# from sklearn.metrics import accuracy_score
+# from sklearn.metrics import f1_score
+# from sklearn.ensemble import RandomForestClassifier
+#
+#dataset = pd.read_csv("data.csv")
+
+# dataset.drop(['loan_id'], axis = 1, inplace = True)
+
+# dataset.columns = dataset.columns.str.strip()
+
+# from sklearn.preprocessing import LabelEncoder
+
+# le = LabelEncoder()
+
+# dataset['self_employed'] = le.fit_transform(dataset['self_employed'])
+# dataset['loan_status'] = le.fit_transform(dataset['loan_status'])
+# dataset['education'] = le.fit_transform(dataset['education'])
 
 
+
+# # Classification Modeling
+
+# # Split dataset
+# X, y = dataset.iloc[:, :-1], dataset.iloc[:, -1]
+
+# # Create train and test splits
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+
+# clf = RandomForestClassifier(
+#                    max_depth=7, min_samples_split=5, min_samples_leaf=5, random_state=42)
+
+# # Train the model
+# clf.fit(X_train, y_train)
+
+
+# # Save the model to a file
+# joblib.dump(clf, 'random_forest_model.pkl')
+
+# print("Model saved successfully.")
 
 
 
 app= Flask(__name__)
 app.secret_key = 'poisawoud24e21cjn!Ew@@dsa5'
 
-openai.api_key = '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'
-'''
-url = "data.csv"
-data = pd.read_csv(url)
+openai.api_key = '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'
 
-# filling the mising values
-data['Bank'] = data['Bank'].fillna(data['Bank'].mode()[0])
-data['BankState'] = data['BankState'].fillna(data['BankState'].mode()[0])
-data['NewExist'] = data['NewExist'].fillna(data['NewExist'].mode()[0])
-data['xx'] = data['xx'].fillna(data['NewExist'].mode()[0])
-data['RevLineCr'] = data['RevLineCr'].replace({'0': 'Y', 'T': 'N'})
-data['RevLineCr'] = data['RevLineCr'].fillna(data['RevLineCr'].mode()[0])
-data['LowDoc'] = data['LowDoc'].fillna(data['LowDoc'].mode()[0])
-
-# data['LowDoc'] = data['LowDoc'].replace(['S','N'], ['A','N'],['0','N'])
-data['LowDoc'] = data['LowDoc'].replace(['S', 'N'], ['A', 'N']).replace('0', 'N')
-data['LowDoc'] = data['LowDoc'].replace('A','N')
-
-# dropping the non-important values
-cols_to_drop = ['Name','City','State','ChgOffDate','DisbursementDate','BalanceGross','Bank','BankState']
-data.drop(cols_to_drop, axis=1, inplace = True)
-
-# Label Encoding is to convert the categorical dataset into numerical
-from sklearn.preprocessing import LabelEncoder
-
-le = LabelEncoder()
-
-cols_to_encode = ['RevLineCr', 'LowDoc', 'MIS_Status']
-
-for col in cols_to_encode:
-    data[col] = le.fit_transform(data[col])
-
-#scale numerical features for logistic model
-features = data.drop(columns=['Default']).columns
-target = 'Default'
-
-# define standard scaler
-scaler = StandardScaler()
-
-# transform data
-data[features] = scaler.fit_transform(data[features])
+# Load the model from the file
+loaded_model = joblib.load('random_forest_model.pkl')
 
 
-new_cols = ['MIS_Status', 'ChgOffPrinGr', 'Term', 'daysterm', 'SBA_Appv',
-       'ApprovalDate', 'xx', 'LoanNr_ChkDgt', 'GrAppv', 'ApprovalFY',target]
+print("Model loaded successfully.")
 
-new_data = data[new_cols]
+columns = ['no_of_dependents', 'education', 'self_employed', 'income_annum',
+       'loan_amount', 'loan_term', 'cibil_score', 'residential_assets_value',
+       'commercial_assets_value', 'luxury_assets_value', 'bank_asset_value']
 
-#split train data into train and validation set
-X_train, X_test, y_train, y_test = train_test_split(data[features],
-                                                    data[target].to_frame(),
-                                                    test_size=0.3,
-                                                    random_state=1234)
 
-new_rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
-new_rf_classifier.fit(X_train, y_train)
-
-'''
 def chatGPT(text):
   url = "https://api.openai.com/v1/completions"
   headers = {
@@ -173,17 +162,17 @@ def get_further_response(prediction,question, prev_prompt, prev_response):
     if len(previous_conv) < 2500:
       previous_conv+char
   final_previous_conv = previous_conv[::-1]
-  if prediction == 1: #Yes
-    add_text = "Again Congrats on your loan application that looks like it would be approved"
-  elif prediction == 0: #No
-    add_text = 'Sorry about your loan application that might not be approved'
+  if prediction == 0: #Yes
+    add_text = "again congrats on your approved loan"
+  elif prediction == 1: #No
+    add_text = 'again sorry about the unapproved loan'
 
   else:
     add_text = ""
 
   final_previous_conv += add_text
 
-  new_prompt = "Hi, this is my question: "+question+" .Answer based on our previous conversion which is: "+final_previous_conv+". Go straight to the point and make the reply strictly less than 800 characters."
+  new_prompt = "Question: " + question + " | Previous Context: " + final_previous_conv + " | Instruction: Provide a concise, direct answer within 800 characters."
 
   further_response = get_response(new_prompt)
 
@@ -255,11 +244,11 @@ def main():
     return render_template('index.html')
 
 
-'''
+
 @app.route('/form_predict', methods=["GET", "POST"])
 def form_predict():
     return render_template('form_predict.html')
-'''
+
 
 
 @app.route('/form_business_idea', methods=["GET", "POST"])
@@ -297,37 +286,26 @@ def next_session():
 
 
 
-@app.route('/form_predict', methods=["GET", "POST"])
-def index():
-    '''
-    name = request.sign_in['name'].capitalize()
-    country= request.sign_in['country']
-    stud_hr= request.form['stud_hr']
-    employed= request.form['employed']
-    h_disab= request.form['h_disab']
-    ment_cond= request.form['ment_cond']
-    social_hr= request.form['social_hr']
-    fit_hr= request.form['fit_hr']
-    wind= request.form['wind']
-    dry_mouth= request.form['dry_mouth']
-    positive= request.form['positive']
-    breath_diff= request.form['breath_diff']
-    initiate= request.form['initiate']
-    tremb= request.form['tremb']
-    worry= request.form['worry']
-    look_fwd= request.form['look_fwd']
-    down= request.form['down']
-    enthus= request.form['enthus']
-    life_mean= request.form['life_mean']
-    scared= request.form['scared']
-    arr = pd.DataFrame((np.array([[age,stud_hr,employed,h_disab,ment_cond,social_hr,fit_hr,wind,dry_mouth,
-                positive,breath_diff,initiate,tremb,worry,look_fwd,down,enthus,
-                life_mean,scared]])
-        ), columns='X_train'.columns)
-    pred= model.predict(arr)
-    '''
+@app.route('/chat_predict', methods=["GET", "POST"])
+def chat_predict():
+    depend= request.form['depend']
+    education= request.form['education']
+    employment= request.form['employment']
+    income= request.form['income']
+    loan_amount= request.form['loan_amount']
+    loan_term= request.form['loan_term']
+    score= request.form['score']
+    resident= request.form['resident']
+    commercial= request.form['commercial']
+    luxury= request.form['luxury']
+    bank= request.form['bank']
+    arr = pd.DataFrame((np.array([[depend,education,employment,income,loan_amount,
+                                   loan_term,score,resident,commercial,
+                luxury,bank]])
+        ), columns=columns)
+    pred= int(loaded_model.predict(arr)[0])
 
-    pred = 1
+
     country = session.get("country",None)
     name = session.get("name",None)
 
@@ -383,9 +361,10 @@ def business_idea():
                                                                      amount=amount,
                                                                      domain_interest=domain_interest,
                                                                      loan_pay_month=loan_pay_month)
-    business_response = jsonify({"bot_business_response": bot_business_response })
+    
+    bot_business_response = json.loads(bot_business_response) 
 
-    session["bot_business_response"] = business_response
+    session["bot_business_response"] = bot_business_response
     session["bot_business_prompt"] = bot_business_prompt
 
     return render_template('chat_business.html',name = name,
@@ -402,7 +381,7 @@ def further_business_chat():
   if request.method == 'POST':
       business_question = request.form['question']
 
-      business_response = get_further_response(prediction = "", question = business_question,
+      business_prompt,  business_response = get_further_response(prediction = "", question = business_question,
                                       prev_prompt = bot_business_prompt, prev_response = bot_business_response)
 
   session["bot_business_response"] = business_response
@@ -436,12 +415,12 @@ def financial_advice():
 
 
 
-    finance_response = jsonify({"bot_finance_response": bot_finance_response })
-
-    session["bot_finance_response"] = finance_response
+    bot_finance_response = json.loads(bot_finance_response) 
+    
+    session["bot_finance_response"] = bot_finance_response
     session["bot_finance_prompt"] = bot_finance_prompt
 
-    return render_template('chat_business.html',name = name,
+    return render_template('chat_finance.html',name = name,
                            country = country, bot_finance_response = bot_finance_response)
 
 
@@ -455,7 +434,7 @@ def further_finance_chat():
   if request.method == 'POST':
       finance_question = request.form['question']
 
-      finance_response = get_further_response(prediction = "", question = finance_question,
+      finance_prompt, finance_response = get_further_response(prediction = "", question = finance_question,
                                       prev_prompt = bot_finance_prompt, prev_response = bot_finance_response)
 
   session["bot_business_response"] = finance_response

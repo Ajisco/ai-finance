@@ -7,6 +7,7 @@ import os
 import json
 import time
 import joblib
+from openai import OpenAI
 
 # from sklearn.preprocessing import StandardScaler
 # from sklearn.model_selection import train_test_split
@@ -56,7 +57,7 @@ import joblib
 app= Flask(__name__)
 app.secret_key = 'poisawoud24e21cjn!Ew@@dsa5'
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 # Load the model from the file
 loaded_model = joblib.load('random_forest_model.pkl')
@@ -69,49 +70,34 @@ columns = ['no_of_dependents', 'education', 'self_employed', 'income_annum',
        'commercial_assets_value', 'luxury_assets_value', 'bank_asset_value']
 
 
+
+
+# Instantiate the OpenAI client
+client = OpenAI(api_key="YOUR-API-KEY")  # Replace 'YOUR-API-KEY' with your actual API key
+
 def chatGPT(text):
-  url = "https://api.openai.com/v1/completions"
-  headers = {
-  "Content-Type": "application/json",
-  "Authorization": "Bearer YOUR-API-KEY",
-  }
-  data = {
-  "model": "text-davinci-003",
-  "prompt": text,
-  "max_tokens": 4000,
-  "temperature": 0.6,
-  }
-  response = requests.post(url, headers=headers, json=data)
-  output = response.json()["choices"][0]["text"]
-
-  return print(output)
-
-
-
-
-
-
+    completion = client.completions.create(
+        model="text-davinci-003",
+        prompt=text,
+        max_tokens=4000,
+        temperature=0.6
+    )
+    return print(completion.choices[0].text)
 
 def get_response(prompt, model="gpt-3.5-turbo"):
+    messages = [
+        {"role": "system", "content": "You are a nice loan acceptance prediction and assistant for small business enterprises"},
+        {"role": "user", "content": prompt}
+    ]
 
-  messages = [{"role": "user", "content": prompt}]
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+        temperature=0
+    )
 
-  messages=[
-      {"role": "system", "content": "You are a nice loan acceptance prediction and assistant for small business enterprises"},
-      {"role": "user", "content": prompt},
-  ]
+    return response.choices[0].message["content"]
 
-  response = openai.ChatCompletion.create(
-
-  model=model,
-
-  messages=messages,
-
-  temperature=0,
-
-  )
-
-  return response.choices[0].message["content"]
 
 
 

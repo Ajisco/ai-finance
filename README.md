@@ -69,4 +69,4 @@ Contributions are welcome! Please follow these steps to contribute:
 For questions or feedback, please reach out to [GitHub Profile](https://github.com/Ajisco).
 ```
 
-This README provides a clear overview of your application, its features, installation steps, structure, functionality, and how to contribute. Replace `[GitHub Profile]` with your actual GitHub profile link or contact information if you wish. Feel free to adjust any section to better align with your project specifics.
+

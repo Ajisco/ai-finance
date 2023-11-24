@@ -57,7 +57,7 @@ from openai import OpenAI
 app= Flask(__name__)
 app.secret_key = 'poisawoud24e21cjn!Ew@@dsa5'
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 # Load the model from the file
 loaded_model = joblib.load('random_forest_model.pkl')

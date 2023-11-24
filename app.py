@@ -94,7 +94,8 @@ def get_response(prompt, model="gpt-3.5-turbo"):
         temperature=0
     )
 
-    return response.choices[0].message["content"]
+    # Access the 'content' attribute directly instead of treating it as a dictionary
+    return response.choices[0].message.content
 
 
 

@@ -1,6 +1,3 @@
-Based on your provided `app.py` script, which outlines a complex Flask application integrating AI for financial advice and machine learning prediction, here's a comprehensive and detailed README in Markdown format:
-
-```markdown
 # AI-Driven Financial Advisory App for SMEs
 
 ## Overview

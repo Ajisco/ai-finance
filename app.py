@@ -9,51 +9,6 @@ import time
 import joblib
 from openai import OpenAI
 
-# from sklearn.preprocessing import StandardScaler
-# from sklearn.model_selection import train_test_split
-# from sklearn.metrics import classification_report
-# from sklearn.metrics import accuracy_score
-# from sklearn.metrics import f1_score
-# from sklearn.ensemble import RandomForestClassifier
-#
-#dataset = pd.read_csv("data.csv")
-
-# dataset.drop(['loan_id'], axis = 1, inplace = True)
-
-# dataset.columns = dataset.columns.str.strip()
-
-# from sklearn.preprocessing import LabelEncoder
-
-# le = LabelEncoder()
-
-# dataset['self_employed'] = le.fit_transform(dataset['self_employed'])
-# dataset['loan_status'] = le.fit_transform(dataset['loan_status'])
-# dataset['education'] = le.fit_transform(dataset['education'])
-
-
-
-# # Classification Modeling
-
-# # Split dataset
-# X, y = dataset.iloc[:, :-1], dataset.iloc[:, -1]
-
-# # Create train and test splits
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
-
-# clf = RandomForestClassifier(
-#                    max_depth=7, min_samples_split=5, min_samples_leaf=5, random_state=42)
-
-# # Train the model
-# clf.fit(X_train, y_train)
-
-
-# # Save the model to a file
-# joblib.dump(clf, 'random_forest_model.pkl')
-
-# print("Model saved successfully.")
-
-
-
 app= Flask(__name__)
 app.secret_key = 'poisawoud24e21cjn!Ew@@dsa5'
 

@@ -10,7 +10,13 @@ import joblib
 from openai import OpenAI
 
 app= Flask(__name__)
-app.secret_key = 'poisawoud24e21cjn!Ew@@dsa5'
+
+#secret keys
+app.secret_key = os.getenv('FLASK_SECRET_KEY')
+
+# Instantiate the OpenAI client
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+
 
 # Load the model from the file
 loaded_model = joblib.load('random_forest_model.pkl')
@@ -22,11 +28,6 @@ columns = ['no_of_dependents', 'education', 'self_employed', 'income_annum',
        'loan_amount', 'loan_term', 'cibil_score', 'residential_assets_value',
        'commercial_assets_value', 'luxury_assets_value', 'bank_asset_value']
 
-
-
-
-# Instantiate the OpenAI client
-client = OpenAI(api_key='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') 
 
 def chatGPT(text):
     completion = client.completions.create(

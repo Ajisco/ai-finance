@@ -66,6 +66,21 @@ The application is available on [Render](https://finai-t4wc.onrender.com), offer
 
 ---
 
+---
+
+## 📍 Skills and Technologies
+- *Programming:* Python, JavaScript
+- *Large Languauge Model:* GPT 3.5
+- *Backend Development:* Flask, Ajax.js
+- *Prompt Enngineering*
+- *Data Wrangling:* Pandas, Numpy
+- *Machine Learning:* Scikit Learn, Random Forest Classifier
+- *Frontend Development:* HTML, CSS, Bootstrap
+- *Cloud Deployment:* Render
+- *Data Analysis and Visualization:* Seaborn, Matplotlib
+
+---
+
 ## 📍 Contributing
 Interested in contributing? Here's how:
 1. Fork the repository.

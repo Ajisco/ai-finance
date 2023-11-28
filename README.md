@@ -7,11 +7,64 @@ FinAI SME Advisor is a sophisticated Flask application, leveraging OpenAI's GPT-
 
 ---
 
-## 📍 Key Features
-- *AI-Powered Advice*: Integrating OpenAI's GPT-3.5 Turbo for specialized financial and business consultation.
-- *Predictive Analysis Model*: Incorporates a Random Forest algorithm for insightful financial decision-making.
-- *Interactive User Interface*: Crafted with Flask, the application offers a responsive and engaging user experience.
-- *Accessible Online*: Hosted on Render, ensuring easy access and widespread usability.
+# 📍 Key Features Overview
+
+## Services and UI Screenshots
+
+### Home Page
+- **Description**: Provides a comprehensive overview of the application, highlighting its main features and functionalities.
+- **Screenshots**:
+  | Home Page 1 | Home Page 2 |
+  | :---: | :---: |
+  | ![Home Page 1](https://github.com/Ajisco/ai-finance/blob/master/fin_images/fin_home1.png) | ![Home Page 2](https://github.com/Ajisco/ai-finance/blob/master/fin_images/fin_home2.png) |
+
+### Sign In and Available Services
+- **Description**: The Sign In page allows users to securely access their accounts, and the Available Services page showcases the variety of services offered.
+- **Screenshots**:
+  | Sign In Page | Available Services |
+  | :---: | :---: |
+  | ![Sign In](https://github.com/Ajisco/ai-finance/blob/master/fin_images/fin_signin.png) | ![Services](https://github.com/Ajisco/ai-finance/blob/master/fin_images/fin_services.png) |
+
+### Loan Approval Service
+- **Description**: Assesses the likelihood of loan approvals for user applications.
+- **Functionality**:
+  - Information on loan acquisition based on user details.
+  - Interactive AI chat for additional queries.
+- **Screenshots**:
+  | Loan Evaluation Form | Loan Evaluation Form |
+  | :---: | :---: |
+  | ![Form 1](https://github.com/Ajisco/ai-finance/blob/master/fin_images/fin_pred_form1.png) | ![Form 2](https://github.com/Ajisco/ai-finance/blob/master/fin_images/fin_pred_form2.png) |
+  | Loan Evaluation Chat | Loan Evaluation Chat |
+  | ![Chat 1](https://github.com/Ajisco/ai-finance/blob/master/fin_images/fin_pred_chat_1.png) | ![Chat 2](https://github.com/Ajisco/ai-finance/blob/master/fin_images/form_pred_chat_2.png) |
+
+### Business Idea Service
+- **Description**: Generates business ideas based on user parameters such as location, capital, and sector.
+- **Functionality**:
+  - Personalized ideas for various parameters.
+  - Interactive AI chat for further exploration.
+- **Screenshots**:
+  | Business Idea Form | Business Idea Chat |
+  | :---: | :---: |
+  | ![Business Form](https://github.com/Ajisco/ai-finance/blob/master/fin_images/fin_busin_form1.png) | ![Chat 1](https://github.com/Ajisco/ai-finance/blob/master/fin_images/fin_busin_chat1.png) |
+
+### Financial Advice Service
+- **Description**: Provides personalized financial advice for SMEs.
+- **Functionality**:
+  - Custom advice based on financial parameters.
+  - AI chat for detailed guidance.
+- **Screenshots**:
+  | Financial Advice Form | Financial Advice Chat |
+  | :---: | :---: |
+  | ![Advice Form](https://github.com/Ajisco/ai-finance/blob/master/fin_images/fin_finan_form1.png) | ![Advice Chat](https://github.com/Ajisco/ai-finance/blob/master/fin_images/fin_finan_chat1.png) |
+
+## Additional Features
+- **Interactive User Interface**:
+  - Backend: Flask.
+  - Frontend: HTML, CSS, JavaScript.
+- **Online Accessibility**:
+  - Hosted on Render.
+
+The visual presentation of the application's interfaces provides a clear insight into the user experience and functionality of each service. These neatly organized sections with screenshots create a comprehensive and visually appealing overview, enhancing the documentation's effectiveness and aesthetic appeal.
 
 ---
 

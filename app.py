@@ -12,10 +12,11 @@ from openai import OpenAI
 app= Flask(__name__)
 
 #secret keys
-app.secret_key = 'poisawoud24e21cjn!Ew@@dsa5'
+app.secret_key = os.getenv('FLASK_SECRET_KEY')
 
 # Instantiate the OpenAI client
-client = OpenAI(api_key='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') 
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+
 
 
 # Load the model from the file

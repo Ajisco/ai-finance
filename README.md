@@ -23,24 +23,24 @@ FinAI SME Advisor is a sophisticated Flask application, leveraging OpenAI's GPT-
 
 ### Installation Steps
 1. Clone the GitHub repository:
-   bash
+   ```bash
    git clone https://github.com/Ajisco/finai.git
-   
-2. Navigate to the project directory:
-   bash
+   ```
+2. Change directory to the project folder:
+   ```bash
    cd finai
-   
-3. Install the necessary Python libraries:
-   bash
+   ```
+3. Install the required Python dependencies:
+   ```bash
    pip install -r requirements.txt
-   
+   ```
 
 ### Running Locally
-Execute the application on your local machine:
-bash
+To run the Flask app locally:
+```bash
 python app.py
-
-Access the app at `http://localhost:5000`.
+```
+Visit `http://localhost:5000` in your web browser to interact with the application.
 
 ---
 

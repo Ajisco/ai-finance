@@ -6,6 +6,8 @@
 FinAI SME Advisor is a sophisticated Flask application, leveraging OpenAI's GPT-3.5 Turbo, to offer bespoke financial and business advice, primarily for SMEs and loan-related queries. Featuring a machine learning model for predictive analytics, the app boasts a dynamic user interface and is conveniently deployed on Render. [Click Here](https://finai-t4wc.onrender.com).
 
 ---
+# Click [Here](https://finai-t4wc.onrender.com) to try app 🚀! 
+---
 
 # 📍 Key Features Overview
 

@@ -3,7 +3,7 @@
 ![header](https://capsule-render.vercel.app/api?type=wave&color=gradient&height=300&section=header&text=FinAI%20SME%20Advisor&fontSize=50)
 
 ## 📍 Overview
-FinAI SME Advisor is a sophisticated Flask application, leveraging OpenAI's GPT-3.5 Turbo, to offer bespoke financial and business advice, primarily for SMEs and loan-related queries. Featuring a machine learning model for predictive analytics, the app boasts a dynamic user interface and is conveniently deployed on [Render](https://finai-t4wc.onrender.com).
+FinAI SME Advisor is a sophisticated Flask application, leveraging OpenAI's GPT-3.5 Turbo, to offer bespoke financial and business advice, primarily for SMEs and loan-related queries. Featuring a machine learning model for predictive analytics, the app boasts a dynamic user interface and is conveniently deployed on Render. [Click Here](https://finai-t4wc.onrender.com).
 
 ---
 
